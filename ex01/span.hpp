@@ -30,7 +30,9 @@ public:
     ~Span();
     Span(const Span& other);
     Span &operator=(const Span& other);
-    
+    const std::vector<int> getDatas() const {return _datas;} 
+    const std::vector<int>& getConstDatas() const {return _datas;}
+    void setDatas(const std::vector<int>& inDatas){_datas = inDatas;}
     int shortestSpan() const;   //shortest distance between 2 numbers.
     int longestSpan() const;    //longest distance between 2 numbers.
 };

@@ -13,6 +13,7 @@
 #include "span.hpp"
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
 Span::Span(unsigned int n) : _maxSize(n)
 {
@@ -68,4 +69,23 @@ int Span::longestSpan() const
             min_ = _datas[i];
     }
     return max_ - min_;
+}
+
+ void Span::addNumber(int number)
+ {
+    if (_datas.size() >= _maxSize)
+    {
+        std::cout << "Warning : Span is already full" << std::endl;
+        return;
+    }
+    std::vector<int>::iterator it;
+
+    for (it = _datas.begin(); it != _datas.end(); ++it)
+    {
+        if (*it == number)
+            std::cout << "Warning : runtime at addNumber ---> already same number in the class" << std::endl;
+        else
+        ; 
+    }
+    _datas.push_back(number);
 }

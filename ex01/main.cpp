@@ -16,22 +16,30 @@
 #include <iostream>
 int main()
 {
-
+    
+    Span span(101);
     std::vector<int> v;
+    span.setDatas(v);
     v.reserve(100);
-    std::vector<int>::iterator it;
+    std::vector<int>::const_iterator it;
     for (int i = 0; i < 100; i++)
     {
         v.push_back(i);
     }
-    for (it = v.begin(); it != v.end(); it++)
+    span.addNumbers(v.begin(), v.end());
+    span.addNumber(1000);
+    span.addNumber(10000);
+
+    for (it = span.getConstDatas().begin(); it != span.getConstDatas().end(); it++)
     {
         std::cout << "*it : " << *it << std::endl;
     }
-    Span span(100);
+    
+    int longestSpan= span.longestSpan();
+    std::cout << "longestSpan : "<< longestSpan << std::endl;
 
-    span.longestSpan();
-    span.shortestSpan();
+    int ShortestSpan = span.shortestSpan();
+    std::cout << "ShortestSpan : " << ShortestSpan << std::endl;
 
     return 0;
 }
