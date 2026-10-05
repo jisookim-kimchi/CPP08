@@ -1,23 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jisokim2 <jisokim2@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/05 14:16:47 by jisokim2          #+#    #+#             */
+/*   Updated: 2026/10/05 14:16:47 by jisokim2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "span.hpp"
 #include <vector>
 #include <algorithm>
 
 Span::Span(unsigned int n) : _maxSize(n)
 {
-
 }
 
 Span::~Span()
 {
-
 }
 
-Span::Span(const Span& other)
+Span::Span(const Span &other)
 {
     *this = other;
 }
 
-Span &Span::operator=(const Span& other)
+Span &Span::operator=(const Span &other)
 {
     if (this != &other)
     {
@@ -30,7 +40,7 @@ Span &Span::operator=(const Span& other)
 int Span::shortestSpan() const
 {
     if (_datas.size() <= 1)
-        throw std::runtime_error("Not enough elements to find the shortest span");
+        throw std::invalid_argument("Error : Not enough elements to find the shortest span");
     std::vector<int> sorted = _datas;
     std::sort(sorted.begin(), sorted.end());
     int shortest = sorted[1] - sorted[0];
@@ -46,8 +56,8 @@ int Span::shortestSpan() const
 int Span::longestSpan() const
 {
     if (_datas.size() <= 1)
-        throw std::runtime_error("Not enough elements to find the longest span");
-    
+        throw std::invalid_argument("Error : Not enough elements to find the longest span");
+
     int max_ = _datas[0];
     int min_ = _datas[0];
     for (size_t i = 1; i < _datas.size(); i++)
@@ -59,4 +69,3 @@ int Span::longestSpan() const
     }
     return max_ - min_;
 }
-
