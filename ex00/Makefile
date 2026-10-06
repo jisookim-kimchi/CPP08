@@ -13,7 +13,7 @@
 NAME = easyfind
 CXX = c++
 CXXFLAGS = -Wall -Wextra -std=c++17
-SRCS = main.cpp easyfind.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
